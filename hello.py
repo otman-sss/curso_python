@@ -1,1 +1,2 @@
-print ("hrllo world")
+print ("hello world")
+print("Goku")
