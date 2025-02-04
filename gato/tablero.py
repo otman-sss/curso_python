@@ -1,21 +1,60 @@
 '''
 Tablero.py: Dibuja el tablero del juego de el gato
 '''
-
-def dibuja_tablero(simbolos:dict):
+import random
+def dibuja_tablero(dsimbolos:dict):
 
     print(f'''
-     {simbolos['1']} | {simbolos['2']} | {simbolos['2']} 
+     {dsimbolos['1']} | {dsimbolos['2']} | {dsimbolos['3']} 
     ---------
-     {simbolos['4']} | {simbolos['5']} | {simbolos['6']} 
+     {dsimbolos['4']} | {dsimbolos['5']} | {dsimbolos['6']} 
     ---------
-     {simbolos['7']} | {simbolos['8']} | {simbolos['9']} 
+     {dsimbolos['7']} | {dsimbolos['8']} | {dsimbolos['9']} 
           ''')
+
+def ia(simbolos:dict):
+    '''Juega a la maquina'''
+    ocupado = True
+    while ocupado is True:
+        x = random.choice(list(simbolos.keys()))
+        if simbolos[x] not      in ['X', 'O']:
+                simbolos[x] = 'O'
+                ocupado = False
+
+def usuario(dsimbolos:dict):
+    '''Juega el usuario'''
+    ocupado = True
+    numeros = [str(i) for i in range(1,11)]#Del 1 al 9
+    while ocupado is True:
+        x = input('Ingresa el numero de la casilla: ')
+        if (x in numeros):
+            if dsimbolos[x] not in ['X', 'O']:
+             dsimbolos[x]= 'X'
+             ocupado = False
+            else:
+              print("Casilla ocupada")
+
+        else: 
+         print("Numero incorrecto")
+
+
 if __name__ == '__main__':
     numeros = [str(x) for x in range(1,10)]
-    simbolos = {x:x for x in numeros}
-    dibuja_tablero(simbolos)
-    simbolos['1'] = 'X'
-    dibuja_tablero(simbolos)
-    simbolos['5'] = 'O'
-    dibuja_tablero(simbolos)
+    dsimbolos = {x:x for x in numeros}
+    dibuja_tablero(dsimbolos)
+    ia(dsimbolos)
+    dibuja_tablero(dsimbolos)
+    usuario(dsimbolos)
+    dibuja_tablero(dsimbolos)
+
+''' 
+   x = random.choice(numeros)
+    numeros.remove(x)
+    dsimbolos[x] = 'X'
+    dibuja_tablero(dsimbolos)
+    o = random.choice(numeros)
+    numeros.remove(o)
+    dsimbolos[o] = 'O'
+    dibuja_tablero(dsimbolos)
+    print(numeros)
+'''
