@@ -6,9 +6,9 @@ def dibuja_tablero(dsimbolos:dict):
 
     print(f'''
      {dsimbolos['1']} | {dsimbolos['2']} | {dsimbolos['3']} 
-    ---------
+    -----------
      {dsimbolos['4']} | {dsimbolos['5']} | {dsimbolos['6']} 
-    ---------
+    -----------
      {dsimbolos['7']} | {dsimbolos['8']} | {dsimbolos['9']} 
     
           ''')
@@ -41,26 +41,59 @@ def usuario(dsimbolos:dict):
 def juego(simbolos:dict):
     '''Juego del gato'''
     lista_combinaciones = [
-        ['1', '2', '3']
-        ['4', '5', '6']
-        ['7', '8', '9']
-        ['1', '4', '7']
-        ['2', '5', '8']
-        ['3', '6', '9']
+        ['1', '2', '3'],
+        ['4', '5', '6'],
+        ['7', '8', '9'],
+        ['1', '4', '7'],
+        ['2', '5', '8'],
+        ['3', '6', '9'],
+        ['1', '5', '9'],
         ['3', '5', '7']
-         
-    ]         
+    ]  
+    en_juego = True
+    ganador = ""
+    movimientos = 0
+    dibuja_tablero(simbolos)
+    while en_juego:      
+        if movimientos < 9:
+            usuario(simbolos)
+            dibuja_tablero(simbolos) 
+            movimientos += 1
+            gana = checa_winner(simbolos, lista_combinaciones)
+            if gana is True:
+                en_juego = False
+                ganador = "usuario/a"
+            ia(simbolos)
+            dibuja_tablero(simbolos) 
+            movimientos += 1
+            if gana is True:
+                en_juego = False
+                ganador = "computadora"
+            if movimientos >= 9:
+                en_juego = False
+        else:
+            en_juego = False     
+
+def checa_winner(simbolos:dict, combinaciones:dict):
+    '''Checa si hay un ganador'''
+    for c in combinaciones:
+        if simbolos[c[0]] == simbolos[c[1]] == simbolos[c[2]]:
+            return simbolos[c[0]]
+        return None    
 
 
 if __name__ == '__main__':
     numeros = [str(x) for x in range(1,10)]
     dsimbolos = {x:x for x in numeros}
+    juego(dsimbolos)
+
+    '''
     dibuja_tablero(dsimbolos)
     ia(dsimbolos)
     dibuja_tablero(dsimbolos)
     usuario(dsimbolos)
     dibuja_tablero(dsimbolos)
-
+    '''
 ''' 
    x = random.choice(numeros)
     numeros.remove(x)
