@@ -10,6 +10,7 @@ def dibuja_tablero(dsimbolos:dict):
      {dsimbolos['4']} | {dsimbolos['5']} | {dsimbolos['6']} 
     ---------
      {dsimbolos['7']} | {dsimbolos['8']} | {dsimbolos['9']} 
+    
           ''')
 
 def ia(simbolos:dict):
@@ -36,6 +37,19 @@ def usuario(dsimbolos:dict):
 
         else: 
          print("Numero incorrecto")
+
+def juego(simbolos:dict):
+    '''Juego del gato'''
+    lista_combinaciones = [
+        ['1', '2', '3']
+        ['4', '5', '6']
+        ['7', '8', '9']
+        ['1', '4', '7']
+        ['2', '5', '8']
+        ['3', '6', '9']
+        ['3', '5', '7']
+         
+    ]         
 
 
 if __name__ == '__main__':
