@@ -1,0 +1,46 @@
+[
+    {
+        "A": {
+            "name": "Mexico",
+            "sport": {
+                "name": "soccer",
+                "players": 11,
+                "league": "FIFA"
+            },
+            "players": [
+                {
+                    "name": "Chicharito"
+                },
+                {
+                    "name": "Chucky"
+                },
+                {
+                    "name": "Ochoa"
+                },
+                {
+                    "name": "Tecatito"
+                },
+                {
+                    "name": "Guardado"
+                },
+                {
+                    "name": "Herrera"
+                },
+                {
+                    "name": "Layun"
+                },
+                {
+                    "name": "Moreno"
+                },
+                {
+                    "name": "Araujo"
+                },
+                {
+                    "name": "Oribe"
+                },
+                {
+                    "name": "Jimenez"
+                }
+            ]
+        },
+        "B": 
