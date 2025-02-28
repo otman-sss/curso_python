@@ -3,6 +3,7 @@ from Athlete import Athlete
 from Sport import Sport
 from Team import Team
 from Game import Game
+import game_logic as gl
 import json
 
 def main(archivo_torneo:str):
@@ -54,7 +55,14 @@ def main(archivo_torneo:str):
         game = Game(A, B)
         game.play()
         print(game)
+        juego['score'] = game.score
         print("----------------")
+    #Calvular el tablero de puntuacion
+    for juego in torneo:
+        print(juego['score'])
+    #Torneo = gl.json_to_tournament(torneo)
+    tablero = gl.scoring(torneo)
+    gl.display_tablero(tablero)
 
 if __name__ == "__main__":
     archivo_torneo = ""
