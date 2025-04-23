@@ -80,6 +80,19 @@ def json_to_tournament(torneo:dict)->list:
     '''Convierte el torneo en una lista de juegos'''
     return[json_to_game(juego) for juego in torneo]
 
+def create_gamefile():
+    '''Crwa un archivo de torneo con equipos y partidos'''   
+      for juego in torneo:
+        A = Team(juego['A']['name'], Sport(juego['A']['sport']['name'], juego['A']['sport']['players'], juego['A']['sport']['league']), [Athlete(x['name']) for x in juego['A']['players']])
+        B = Team(juego['B']['name'], Sport(juego['B']['sport']['name'], juego['B']['sport']['players'], juego['B']['sport']['league']), [Athlete(x['name']) for x in juego['B']['players']])
+        game = Game(A, B)
+        game.play()
+        print(game)
+        juego['score'] = game.score
+        print("----------------")
+
+def play_game(torneo:dict)         
+
 if __name__ == "__main__":
     archivo = "torneo.json"
     with open(archivo, "r") as f:

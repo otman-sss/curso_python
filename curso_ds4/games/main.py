@@ -49,14 +49,7 @@ def main(archivo_torneo:str):
         print(f"Se escribio archivo '{archivo}' Satisfactoriamente")    
 
  # Jugar todos los juegos del torneo
-    for juego in torneo:
-        A = Team(juego['A']['name'], Sport(juego['A']['sport']['name'], juego['A']['sport']['players'], juego['A']['sport']['league']), [Athlete(x['name']) for x in juego['A']['players']])
-        B = Team(juego['B']['name'], Sport(juego['B']['sport']['name'], juego['B']['sport']['players'], juego['B']['sport']['league']), [Athlete(x['name']) for x in juego['B']['players']])
-        game = Game(A, B)
-        game.play()
-        print(game)
-        juego['score'] = game.score
-        print("----------------")
+  
     #Calvular el tablero de puntuacion
     for juego in torneo:
         print(juego['score'])
@@ -65,5 +58,6 @@ def main(archivo_torneo:str):
     gl.display_tablero(tablero)
 
 if __name__ == "__main__":
+    '''Funcion principal del juego'''
     archivo_torneo = ""
     main(archivo_torneo)

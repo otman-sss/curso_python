@@ -83,7 +83,31 @@ def checa_winner(simbolos:dict, combinaciones:dict):
     for c in combinaciones:
         if simbolos[c[0]] == simbolos[c[1]] == simbolos[c[2]]:
             return simbolos[c[0]]
-    return None    
+    return None 
+   
+def actualiza_score(score:dict,ganador:str):
+    '''Actualiza Score'''
+    X = score["X"]
+    O = score["O"]
+    if ganador is not None:
+        print(f'El ganador  es {ganador}')
+        if ganador == "X":
+            X["G"] += 1
+            O["P"] += 1
+        elif ganador == 'O':
+            O["G"] += 1
+            X["P"] += 1
+        else:
+            print("Empate")
+            X["E"] += 1
+            O["E"] += 1
+
+def despliega_tablero(score:dict):
+    '''Despliega el tablero de score'''
+    print(f'''
+          X | G: {score["X"] ["O"]} | P: {score["X"] ["P"]} | E: {score["X"] ["E"]}
+          O | G: {score["O"] ["X"]} | P: {score["O"] ["P"]} | E: {score["O"] ["E"]}     
+          ''')
 
 
 if __name__ == '__main__':
@@ -91,7 +115,7 @@ if __name__ == '__main__':
     dsimbolos = {x:x for x in numeros}
     g = juego(dsimbolos)
     if g is not None:
-        print1(f'El ganador es {g}')
+        print(f'El ganador es {g}')
     
     else:
             print('Empate')
